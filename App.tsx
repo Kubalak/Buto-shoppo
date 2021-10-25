@@ -17,19 +17,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#555',
     alignItems: 'center',
     justifyContent: 'center',
   },
   test: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#555',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text:
   {
-    color: '#f0f',
+    color: 'rgba(128,255,255,0.8)',
     fontWeight: 'bold',
     fontFamily: 'monospace',
   },
