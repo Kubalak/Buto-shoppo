@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, StatusBar, Platform } from 'react-native';
 import TopBar from './navigation/TopBar';
+import ShopItem from './components/ShopItem';
 // import { configureFonts, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
@@ -8,10 +9,9 @@ export default function App() {
     <View style={styles.base}>
       <TopBar/>
       <View style={styles.test}> 
-        <Text>
-          Something is here!
-        </Text>
-        <Image source={require('./assets/disconnect_iconl.png')} style={{width:200, height: 200, resizeMode: 'stretch'}} />
+        <ShopItem img={0} title="No co to tylko Nike!" price="210,12 zł"/>
+        <ShopItem img={1} title="No co ?!" price="Priceless"/>
+        <ShopItem img={2} title="No odczep się!" price="1 mln zł"/>
       </View>
     </View>
   );
@@ -20,15 +20,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fee',
     alignItems: 'center',
     justifyContent: 'center',
   },
   test: {
+    padding: 20,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexGrow: 1,
+    backgroundColor: '#fee',
+    alignItems: 'baseline',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   base:
   {
