@@ -15,11 +15,11 @@ export default function TopBar(){
     return(
       <View style={style.default}>
           <TouchableOpacity style={{paddingLeft: 20}}onPress={Menu}>
-              <FontAwesome name="bars" size={24} color="#aa0"/>
+              <FontAwesome name="bars" size={24} color="#666"/>
             </TouchableOpacity>
             <Text>Buto-shoppo!</Text>
           <TouchableOpacity style={{paddingRight: 20}} onPress={Cart}>
-          <FontAwesome name="shopping-cart" size={24} color="#0dd"/>
+          <FontAwesome name="shopping-cart" size={24} color="#666"/>
           </TouchableOpacity>
       </View>  
     );
@@ -39,7 +39,7 @@ const style = StyleSheet.create({
         borderRadius: 10,
         shadowRadius: 10,
         shadowOffset: {width: 1, height: 5},
-        backgroundColor: '#efe',
+        backgroundColor: '#fff',
         shadowColor: '#000',
         shadowOpacity: 1.0,
         elevation: 5,
