@@ -1,27 +1,48 @@
 import { FontAwesome } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet, Text,Button , View, Alert, TouchableOpacity,StatusBar, Platform} from 'react-native';
+import {Cart,Menu,Home} from '../screens/index';
 
-function Menu(){
+/*function Menu(){
     Alert.alert('You have pressed menu!');
 }
 function Cart(){
     Alert.alert('You have pressed cart!');
-}
+}*/
+
+const Stack = createNativeStackNavigator();
 
 export default function TopBar(){
     //console.log(style.default.height)
    // console.log(style.default.paddingTop)
     return(
-      <View style={style.default}>
-          <TouchableOpacity style={{paddingLeft: 20}}onPress={Menu}>
-              <FontAwesome name="bars" size={24} color="#666"/>
-            </TouchableOpacity>
-            <Text>Buto-shoppo!</Text>
-          <TouchableOpacity style={{paddingRight: 20}} onPress={Cart}>
-          <FontAwesome name="shopping-cart" size={24} color="#666"/>
-          </TouchableOpacity>
-      </View>  
+      <NavigationContainer>
+          <Stack.Navigator>
+              <Stack.Screen
+             name="home"
+             component={Home}
+             options={({navigation, route})=> ({
+               headerTitle: (props) => <FontAwesome name="home" size={24} color="#666"/>,
+             })}
+            />
+              <Stack.Screen
+              name="menu"
+              component={Menu}
+              options={({navigation, route})=> ({
+                headerTitle: (props) => <FontAwesome name="bars" size={24} color="#666"/>,
+              })}/>
+            <Stack.Screen
+             name="cart"
+             component={Cart}
+             options={({navigation, route})=> ({
+               headerTitle: (props) => <FontAwesome name="shopping-cart" size={24} color="#666"/>,
+             })}
+            />
+            
+          </Stack.Navigator>
+      </NavigationContainer>  
     );
 }
 
