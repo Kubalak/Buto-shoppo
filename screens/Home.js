@@ -11,7 +11,6 @@ export default function Home()
         items.push(new ShopItem(Items.shopItems[i]));
     
     return(
-    
         <ScrollView style={{backgroundColor: 'white'}}> 
             <View style={styles.test}>
                 {items}

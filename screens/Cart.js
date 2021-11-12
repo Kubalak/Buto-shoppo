@@ -1,12 +1,23 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {View,Text, StyleSheet, ScrollView} from 'react-native';
 
 export default function Cart({navigation})
 {
-    return (<View>
-        <Text>
-            This is cart!
-        </Text>
-    </View>
+    return (
+        <ScrollView style={{backgroundColor: 'white'}}>
+            <View style={style.default}>
+                <Text>
+                    This is cart!
+                </Text>
+            </View>
+        </ScrollView>
     );
 }
+
+const style = StyleSheet.create({
+    default:
+    {
+        backgroundColor: '#fff',
+    },
+
+});

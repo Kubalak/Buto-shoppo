@@ -4,6 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet, Text,Button , View, Alert, TouchableOpacity,StatusBar, Platform} from 'react-native';
 import {Cart,Menu,Home} from '../screens/index';
+import CartBar from './CartBar';
+import HomeBar from './HomeBar';
+import MenuBar from './MenuBar';
 
 /*function Menu(){
     Alert.alert('You have pressed menu!');
@@ -24,20 +27,20 @@ export default function TopBar(){
              name="home"
              component={Home}
              options={({navigation, route})=> ({
-               headerTitle: (props) => <FontAwesome name="home" size={24} color="#666"/>,
+               headerTitle: (props) => <HomeBar navigation={navigation}/>,
              })}
             />
               <Stack.Screen
               name="menu"
               component={Menu}
               options={({navigation, route})=> ({
-                headerTitle: (props) => <FontAwesome name="bars" size={24} color="#666"/>,
+                headerTitle: (props) => <MenuBar navigation={navigation}/>,
               })}/>
             <Stack.Screen
              name="cart"
              component={Cart}
              options={({navigation, route})=> ({
-               headerTitle: (props) => <FontAwesome name="shopping-cart" size={24} color="#666"/>,
+               headerTitle: (props) => <CartBar navigation={navigation}/>,
              })}
             />
             
