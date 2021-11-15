@@ -2,10 +2,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import React from "react";
 import { View,StyleSheet,Text } from "react-native";
 
-export default function MenuBar({navigation}) {
+export default function MyOffersBar({navigation}) {
     return(
         <View style={style.default}>
-            <Text>Menu</Text>
+            <Text>Moje oferty</Text>
         </View>
     );
 }

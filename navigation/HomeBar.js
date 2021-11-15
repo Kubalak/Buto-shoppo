@@ -5,9 +5,8 @@ import { TouchableOpacity, View,StyleSheet,Text } from "react-native";
 export default function HomeBar({navigation}) {
     return(
         <View style={style.default}>
-            <TouchableOpacity style={style.easyTouch} onPress={() => {navigation.push('menu')}}><FontAwesome name="bars" size={24} color="#666"/></TouchableOpacity>
             <Text>Buto-shoppo</Text>
-            <TouchableOpacity style={style.easyTouch}onPress={() => {navigation.push('cart')}}><FontAwesome name="shopping-cart" size={24} color="#666"/></TouchableOpacity>
+            <TouchableOpacity onPress={() => {navigation.push('cart')}}><FontAwesome name="shopping-cart" size={24} color="#666"/></TouchableOpacity>
         </View>
     );
 }
@@ -20,11 +19,7 @@ const style = StyleSheet.create({
         alignItems: 'flex-end',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '95%',
+        width: '90%',
     },
-    easyTouch:
-    {
-       borderRadius: 5,
-    }
 
 });

@@ -3,10 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet, Text,Button , View, Alert, TouchableOpacity,StatusBar, Platform} from 'react-native';
-import {Cart,Menu,Home} from '../screens/index';
+import {Cart,Menu,Home,Login} from '../screens/index';
 import CartBar from './CartBar';
-import HomeBar from './HomeBar';
-import MenuBar from './MenuBar';
 
 /*function Menu(){
     Alert.alert('You have pressed menu!');
@@ -17,25 +15,22 @@ function Cart(){
 
 const Stack = createNativeStackNavigator();
 
-export default function TopBar(){
+export default function HomeNavigation(){
     //console.log(style.default.height)
    // console.log(style.default.paddingTop)
     return(
       <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator >
+          <Stack.Screen
+             name="login"
+             component={Login}
+             options={{headerShown: false}}
+            />
               <Stack.Screen
              name="home"
              component={Home}
-             options={({navigation, route})=> ({
-               headerTitle: (props) => <HomeBar navigation={navigation}/>,
-             })}
+             options={{headerShown: false}}
             />
-              <Stack.Screen
-              name="menu"
-              component={Menu}
-              options={({navigation, route})=> ({
-                headerTitle: (props) => <MenuBar navigation={navigation}/>,
-              })}/>
             <Stack.Screen
              name="cart"
              component={Cart}
