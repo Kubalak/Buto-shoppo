@@ -1,16 +1,17 @@
 import React from "react";
-import {ScrollView,View,StyleSheet} from 'react-native';
+import {ScrollView,View,StyleSheet, Text} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import ShopItem from '../components/ShopItem';
 import HomeBar from '../navigation/HomeBar';
 import MyOffersBar from '../navigation/MyOffersBar';
-import MyOffers from "../screens/MyOffers";
+import MyOffers from "./MyOffers";
 import {Items} from '../storage/items';
+import NewOffer from "./NewOffer";
 
 function HomeView({navigation}){
     let items = [];
     for(var i= 0;i<Items.shopItems.length;i++)
-        items.push(new ShopItem(Items.shopItems[i]));
+        items.push(new ShopItem(Items.shopItems[i], {navigation}));
 
     return (
     <ScrollView style={{backgroundColor: 'white', flex:1}}> 
@@ -20,6 +21,7 @@ function HomeView({navigation}){
     </ScrollView>);
 }
 const Drawer = createDrawerNavigator();
+
 export default function Home({navigation})
 {
 
@@ -32,6 +34,10 @@ export default function Home({navigation})
               <Drawer.Screen name="Moje oferty" component={MyOffers} 
             options={({navigation, route})=> ({
                 headerTitle: (props) => <MyOffersBar navigation={navigation}/>,
+              })}/>
+              <Drawer.Screen name="Nowa oferta" component={NewOffer} 
+            options={({navigation, route})=> ({
+                headerTitle: (props) => <Text>Nowa oferta</Text>,
               })}/>
         </Drawer.Navigator>
     );

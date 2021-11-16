@@ -1,17 +1,19 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity,Image } from "react-native";
+import { Items } from '../storage/items';
 
-export default ShopItem = (props) =>
-{
+
+export default ShopItem = (props, {navigation}) =>
+{  
     return(
-    <TouchableOpacity style={style.default} key={props.key}>
+    <TouchableOpacity style={style.default} key={props.key} onPress={() => navigation.navigate('itemView',{props})}>
         <View>
             <Image source={{uri: props.uri}} style={style.image} />
             <Text style={style.title}>{props.title}</Text>
             <View style={style.offer}>
                 <Text style={style.price}>{props.price}</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => Items.cart.push(props.key)}>
                     <FontAwesome style={style.buy} name="shopping-basket"/>
                 </TouchableOpacity>
             </View>
