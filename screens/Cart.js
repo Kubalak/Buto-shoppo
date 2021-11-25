@@ -9,7 +9,7 @@ export default function Cart({navigation})
     let index = 0;
     for (var item of Items.cart)
     {   index += 1;
-        items.push(<Text style={{fontWeight: 'bold', padding: 10}} key={index}> {item} </Text>);
+        items.push(<Text style={{fontWeight: 'bold', padding: 10}} key={index}> {item.key} {item.amount} </Text>);
     }
     return (
         <ScrollView style={{backgroundColor: 'white'}}>

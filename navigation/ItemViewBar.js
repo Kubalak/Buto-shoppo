@@ -5,7 +5,7 @@ export default function ItemViewBar(props)
 {
     props = props.props;
     return(
-    <View style={{backgroundColor:'white', flex: 1}}>
+    <View style={{flex: 1}}>
         <Text>
             {props.title}
         </Text>

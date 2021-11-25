@@ -21,7 +21,11 @@ export default function HomeNavigation(){
    // console.log(style.default.paddingTop)
     return(
       <NavigationContainer>
-          <Stack.Navigator >
+          <Stack.Navigator screenOptions={{
+             headerStyle:{
+              backgroundColor: '#40F98F'
+          }
+          }} initialRouteName="login">
           <Stack.Screen
              name="login"
              component={Login}

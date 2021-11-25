@@ -1,5 +1,5 @@
 import React from "react";
-import {ScrollView,View,StyleSheet, Text} from 'react-native';
+import {StyleSheet,View, Text, FlatList} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import ShopItem from '../components/ShopItem';
 import HomeBar from '../navigation/HomeBar';
@@ -9,16 +9,13 @@ import {Items} from '../storage/items';
 import NewOffer from "./NewOffer";
 
 function HomeView({navigation}){
-    let items = [];
-    for(var i= 0;i<Items.shopItems.length;i++)
-        items.push(new ShopItem(Items.shopItems[i], {navigation}));
 
     return (
-    <ScrollView style={{backgroundColor: 'white', flex:1}}> 
-        <View style={styles.test}>
-            {items}
-        </View>        
-    </ScrollView>);
+        <View style={{backgroundColor: 'white', flex:1}}>
+    <FlatList 
+        data={Items.shopItems}
+        renderItem={({item}) => <ShopItem item={item}/>}/>         
+    </View>);
 }
 const Drawer = createDrawerNavigator();
 
@@ -26,7 +23,11 @@ export default function Home({navigation})
 {
 
     return(
-        <Drawer.Navigator initialRouteName = "Sklep">
+        <Drawer.Navigator initialRouteName = "Sklep" screenOptions ={{
+            headerStyle:{
+                backgroundColor: '#40F98F'
+            }
+        }}>
             <Drawer.Screen name="Sklep" component={HomeView} 
             options={({navigation, route})=> ({
                 headerTitle: (props) => <HomeBar navigation={navigation}/>,
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
             padding: 15,
             flex: 1,
             flexGrow: 1,
-            backgroundColor: '#fff',
+            backgroundColor: '#fff', 
             alignItems: 'baseline',
             flexDirection: 'row',
             flexWrap: 'wrap',
