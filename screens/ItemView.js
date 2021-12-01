@@ -21,9 +21,9 @@ const style = StyleSheet.create({
         width:'100%',
         height:300,
         marginTop:5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor:'#f2f2f2',      
+        alignItems:'center',
+        backgroundColor:'#F5F5F5',
+        flex:1,      
     },
 
     image:{
@@ -31,12 +31,9 @@ const style = StyleSheet.create({
         height: 210,
         borderRadius:25,
         overflow: 'hidden',
-        borderWidth:1,
-        borderColor:'gray',
         shadowColor: '#202020',
         shadowOffset: {width: 0, height: 0},
-        shadowRadius: 5,
-        
+        shadowRadius: 5, 
     },
 
     titleText:{
