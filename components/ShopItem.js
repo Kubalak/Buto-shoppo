@@ -35,11 +35,11 @@ export default function ShopItem (props) {
         <View style={style.baseOffer}>
             <Image source={{uri: props.uri}} style={style.image} />
             <View style={style.offer}>
-                <Text style={style.title}>{props.title}</Text>
+                <Text style={style.title} numberOfLines={1}>{props.title}</Text>
                 <View style={style.props}>
                     <Text numberOfLines={1}>· Materiał: <Text numberOfLines={1} style={{fontWeight: 'bold'}}>{props.material}</Text></Text>
                     <Text numberOfLines={1}>· Rozmiary: <Sizes props={props.availableSizes}/></Text>
-                    <Text numberOfLines={1}>· Kolory: </Text>
+                    <Text numberOfLines={1}>· Dostępne kolory: </Text>
                     <SafeAreaView style={{flexDirection: 'row', flexShrink: 1, width: 90}}><Colours props={props.availableColours}/></SafeAreaView>
                     
                 </View>
@@ -94,21 +94,24 @@ const style = StyleSheet.create(
         offer:{
             paddingLeft: 10,
             paddingRight: 10,
-            width: 180,
+            flex: 1,
         },
         price:{
             textAlignVertical: 'center',
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 18,
             color: 'black',
+            textAlign: 'right',
+            paddingRight: 15,
         },
         buyOffer:{
-            width: 100,
+            flex: 1,
             paddingTop: 40
         },
         buyPrt: {
             alignSelf: 'flex-end',
-            marginTop: 30
+            marginTop: 30,
+            paddingRight: 10,
         },
         buy:{
             fontSize: 13,

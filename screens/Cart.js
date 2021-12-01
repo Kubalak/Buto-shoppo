@@ -1,32 +1,36 @@
 import React from 'react';
-import {View,Text, StyleSheet, ScrollView} from 'react-native';
+import {View,Text, StyleSheet, FlatList} from 'react-native';
 import { Items } from '../storage/items';
+import CartItem from '../components/CartItem';
 
-export default function Cart({navigation})
+export default function Cart(props)
 {
-    console.log(Items.cart);
+    props = props.item;
     let items = [];
     let index = 0;
     for (var item of Items.cart)
-    {   index += 1;
-        items.push(<Text style={{fontWeight: 'bold', padding: 10}} key={index}> {item.key} {item.amount} </Text>);
+    {   
+        index += 1;
+        items.push(<CartItem key={index} props={item}/>);
     }
     return (
-        <ScrollView style={{backgroundColor: 'white'}}>
-            <View style={style.default}>
-                <Text>
-                    This is cart!
-                    {items}
-                </Text>
-            </View>
-        </ScrollView>
-    );
+    <View style={style.default}>
+
+    <FlatList 
+        data={Items.cart}
+        renderItem={({item}) => <CartItem props={item}/>}/> 
+        
+        
+    </View>
+    ); 
 }
 
 const style = StyleSheet.create({
     default:
     {
+        flex:1,
         backgroundColor: '#fff',
     },
+    
 
 });
