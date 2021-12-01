@@ -18,9 +18,7 @@ export default function Cart(props)
 
     <FlatList 
         data={Items.cart}
-        renderItem={({item}) => <CartItem props={item}/>}/> 
-        
-        
+        renderItem={({item}) => <CartItem props={item}/>}/>    
     </View>
     ); 
 }
