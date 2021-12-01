@@ -26,7 +26,7 @@ export default function Colours({props})
         <FlatList
         data={props}
         renderItem={({item}) => <RenderItem props={item}/>}
-        numColumns={6}
+        numColumns={5}
         />
         </>
     );

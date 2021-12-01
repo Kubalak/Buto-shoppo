@@ -7,7 +7,7 @@ class Items {
             title:"Nike Air More Uptempo",
             material: 'Skóra',
             availableSizes: [39,40,41,42,45],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 299.99
         },
         {
@@ -17,7 +17,7 @@ class Items {
             title:"Nike Kyrie 7", 
             material: 'Materiał',
             availableSizes: [39,41,42,43],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 520.99
         },
         {
@@ -27,7 +27,7 @@ class Items {
             title:"Nike Air Zoom Pegasus", 
             material: 'Tworzywo sztuczne',
             availableSizes: [40,41,42,43,44],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 400.0
         },
         {
@@ -37,7 +37,7 @@ class Items {
             title:"Nike KD 14", 
             material: 'Materiał',
             availableSizes: [38,39,40,41,42,43],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 799.99
         },
         {
@@ -47,7 +47,7 @@ class Items {
             title:"Nike Air Jordan 1", 
             material: 'Skóra',
             availableSizes: [41,42,44],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 500.00
         },
         {
@@ -57,7 +57,7 @@ class Items {
             title:"Nike Air Force 1 LOW", 
             material: 'Skóra ekologiczna',
             availableSizes: [40,41,42,43],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 499.99
         },
         {
@@ -67,7 +67,7 @@ class Items {
             title:"Nike Air Max Plus", 
             material: 'Skóra',
             availableSizes: [39,40,41,42],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 300.00
         },
         {
@@ -77,7 +77,7 @@ class Items {
             title:"Nike React Vision",
             material: 'Skóra',
             availableSizes: [39,40,41,42,43,45],
-            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}, {key: 6, colour: '#2E00FF'}],
+            availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
             price: 550.00
         },
         {
@@ -87,7 +87,7 @@ class Items {
             title:"Nike Air Zoom", 
             material: 'Skóra',
             availableSizes: [44,45],
-            availableColours: [{key: 1,  colour: '#BBBBBB'}, {key: 2, colour: '#CCCCCC'}, {key: 3, colour: '#DDDDDD'},{key: 4, colour: '#AAAAAA'}, {key: 5, colour: '#2E00FF'}],
+            availableColours: [{key: 1,  colour: '#BBBBBB'}, {key: 2, colour: '#CCCCCC'}, {key: 3, colour: '#DDDDDD'},{key: 4, colour: '#AAAAAA'}],
             price: 200.00
         },
     ];

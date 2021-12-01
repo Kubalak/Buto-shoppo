@@ -59,18 +59,20 @@ const style = StyleSheet.create(
     {
         default:{
             marginBottom: 10,
-            marginTop: 10,
-            width: '100%',
+            paddingTop: 10,
+            flex: 1,
             height: 150,
-            backgroundColor: '#fff',
-            shadowRadius: 10,
-            shadowOffset: {width: 0, height: 5},
-            shadowColor: '#033',
-            shadowOpacity: 2.0,
-            elevation: 3,
+            
         },
         baseOffer: {
-            flexDirection: 'row'
+            flex: 1,
+            flexDirection: 'row',
+            elevation: 6,
+            shadowRadius: 10,
+            shadowColor: 'black',
+            shadowOpacity: 13,
+            shadowOffset: {widht: 0, height: 5},
+            backgroundColor: '#F5F5F5',
         },
         props:{
 
@@ -94,7 +96,7 @@ const style = StyleSheet.create(
         offer:{
             paddingLeft: 10,
             paddingRight: 10,
-            flex: 1,
+            flex: 1.3,
         },
         price:{
             textAlignVertical: 'center',
@@ -110,7 +112,7 @@ const style = StyleSheet.create(
         },
         buyPrt: {
             alignSelf: 'flex-end',
-            marginTop: 30,
+            marginTop: 32,
             paddingRight: 10,
         },
         buy:{
@@ -122,7 +124,11 @@ const style = StyleSheet.create(
             color: '#555555',
             backgroundColor: '#40F98F',
             borderRadius: 35,
-            alignSelf: 'flex-end'
+            alignSelf: 'flex-end',
+            elevation: 3,
+            shadowRadius: 5,
+            shadowColor: 'black',
+            shadowOpacity: 3
             
         }
     }
