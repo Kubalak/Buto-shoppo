@@ -23,7 +23,7 @@ export default function HomeNavigation(){
       <NavigationContainer>
           <Stack.Navigator screenOptions={{
              headerStyle:{
-              backgroundColor: '#40F98F'
+              backgroundColor: '#FFFFFF'
           }
           }} initialRouteName="login">
           <Stack.Screen

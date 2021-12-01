@@ -25,7 +25,7 @@ export default function Home({navigation})
     return(
         <Drawer.Navigator initialRouteName = "Sklep" screenOptions ={{
             headerStyle:{
-                backgroundColor: '#40F98F'
+                backgroundColor: '#FFFFFF'
             }
         }}>
             <Drawer.Screen name="Sklep" component={HomeView} 

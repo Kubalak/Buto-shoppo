@@ -1,7 +1,7 @@
 import { Button, Modal } from "native-base";
 import React from "react";
 import { useState } from "react";
-import {View,StyleSheet,Text,Image,TextInput, Pressable} from "react-native";
+import {View,StyleSheet,Text,Image,TextInput, Pressable, ImageBackground} from "react-native";
 import {Status} from "../storage/State";
 
 
@@ -48,6 +48,7 @@ export default function Login({navigation})
     }
     return(
         <View style={style.default}>
+            <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
             <Image source={require('../assets/icon.png')} style={{width: 150, height: 150, resizeMode: 'stretch', marginBottom: 25}}/>
             <View style={style.input}>
                <TextInput
@@ -69,17 +70,13 @@ export default function Login({navigation})
             <Text>Zapomniałeś hasła?</Text>
             <MyModal/>
             <Pressable style={style.loginBtn} onPress={() => {Verify()}}><Text>Zaloguj</Text></Pressable>
+            </ImageBackground>
         </View>
     );
 }
 
 const style = StyleSheet.create({
     default:{
-        backgroundColor: 'white',
-        alignContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center',
         flex: 1,
     },
     input:{

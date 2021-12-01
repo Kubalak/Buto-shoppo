@@ -6,8 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Sizes from './Sizes';
 import Colours from './Colours';
 
-export default ShopItem = (props) =>
-{   
+export default function ShopItem (props) {   
     const navigation = useNavigation();
     props = props.item;
     function AddToCart(){
@@ -48,7 +47,7 @@ export default ShopItem = (props) =>
             <View style={style.buyOffer}>
                 <Text style={style.price}>{props.price.toFixed(2).toString().replace(".", ",")} zł</Text>
                 <TouchableOpacity style={style.buyPrt} onPress={() => AddToCart()}>
-                    <Text style={style.buy}>Do koszyka <FontAwesome   name="shopping-basket"/></Text>
+                    <Text style={style.buy}>Do koszyka <FontAwesome  name="shopping-basket"/></Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -117,8 +116,8 @@ const style = StyleSheet.create(
             textAlignVertical: 'center',
             width: 105,
             height: 35,
-            color: 'white',
-            backgroundColor: 'red',
+            color: '#555555',
+            backgroundColor: '#40F98F',
             borderRadius: 35,
             alignSelf: 'flex-end'
             
