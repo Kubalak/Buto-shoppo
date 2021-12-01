@@ -1,13 +1,28 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {View,Text, StyleSheet, FlatList} from 'react-native';
+import OfferItem from '../components/OfferItem';
+import { Items } from '../storage/items';
+import { Status } from '../storage/State';
 
 export default function MyOffers({navigation})
 {
+    let data = Items.shopItems.filter(function(elem) {
+        return elem.createdBy === Status.loggedAs
+    });
+
     return(
-    <View style={{backgroundColor:'white', flex: 1}}>
-        <Text>
-            Tutaj powinny znaleźć się oferty użytkownika.
-        </Text>
+    <View style={style.default}>
+        <FlatList 
+            data={data}
+            renderItem={({item}) => <OfferItem navigation={navigation} offer={item}/>}
+        />
     </View>
     );
 }
+
+const style = StyleSheet.create({
+    default: {
+        flex:1,
+        backgroundColor: 'white'
+    }
+})

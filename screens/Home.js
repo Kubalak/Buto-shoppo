@@ -25,7 +25,11 @@ export default function Home({navigation})
     return(
         <Drawer.Navigator initialRouteName = "Sklep" screenOptions ={{
             headerStyle:{
-                backgroundColor: '#FFFFFF'
+                backgroundColor: '#FFFFFF',
+                elevation: 5,
+                shadowOpacity: 3,
+                shadowRadius: 5,
+                shadowColor: 'black'
             }
         }}>
             <Drawer.Screen name="Sklep" component={HomeView} 
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
             padding: 15,
             flex: 1,
             flexGrow: 1,
-            backgroundColor: '#fff', 
+            backgroundColor: '#FFFFFF', 
             alignItems: 'baseline',
             flexDirection: 'row',
             flexWrap: 'wrap',

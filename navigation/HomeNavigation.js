@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet, Text,Button , View, Alert, TouchableOpacity,StatusBar, Platform} from 'react-native';
-import {Cart,Menu,Home,Login,ItemView} from '../screens/index';
+import {Cart,Menu,Home,Login,ItemView, OfferView} from '../screens/index';
 import CartBar from './CartBar';
 import ItemViewBar from './ItemViewBar';
 
@@ -46,6 +46,13 @@ export default function HomeNavigation(){
             <Stack.Screen
              name="itemView"
              component={ItemView}
+             options={({navigation, route})=> ({
+               headerTitle: (props) => <ItemViewBar props={route.params.props}/>,
+             })}
+            />
+            <Stack.Screen
+             name="offerView"
+             component={OfferView}
              options={({navigation, route})=> ({
                headerTitle: (props) => <ItemViewBar props={route.params.props}/>,
              })}
