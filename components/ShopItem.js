@@ -5,13 +5,20 @@ import { Items } from '../storage/items';
 import { useNavigation } from '@react-navigation/native';
 import Sizes from './Sizes';
 import Colours from './Colours';
+import {Button,useToast} from "native-base"
 
-export default function ShopItem (props) {   
+export default function ShopItem (props) {
+
     const navigation = useNavigation();
+    const toast = useToast();
     props = props.item;
+
+
     function AddToCart(){
+        
         if(Items.cart.length > 0)
         {
+            
             for (var i = 0; i < Items.cart.length; i++)
             {
                 if(Items.cart[i].key !== undefined && Items.cart[i].key === props.key)
@@ -29,7 +36,14 @@ export default function ShopItem (props) {
         {
             Items.cart.push({key: props.key, amount: 1});
         }
+
+        toast.show({
+        title: "Nowy zakup",
+        status: "success",
+        description: "Dodano element do koszyka",
+        })
     }
+    
     return(
     <TouchableOpacity style={style.default} key={props.key} onPress={() => navigation.navigate('itemView',{props})}>
         <View style={style.baseOffer}>
