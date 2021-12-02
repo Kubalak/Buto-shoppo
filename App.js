@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, StatusBar, Platform } from 'react-native';
 import HomeNavigation from './navigation/HomeNavigation';
 import { NativeBaseProvider } from 'native-base';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faDeaf, faRadiation, faSpider, faTty } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faDeaf, faRadiation, faSpider, faTty)
 
 export default function App() {
    return (

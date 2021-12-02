@@ -11,8 +11,8 @@ export default function OfferItem({navigation,offer}) {
                 <View style={{flex:1}}>
                     <Image source={{uri: offer.uri}} style={style.image}/></View>
                 <View style={{flex:2, paddingTop: 5}}>
-                    <Text>Sprzedajesz: <Text style={{fontWeight: 'bold'}}>{offer.title}</Text></Text>
-                    <Text>Dostępne rozmiary: <Sizes props={offer.availableSizes}/></Text>
+                    <Text style={{fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center', fontSize: 15}}>{offer.title}</Text>
+                    <Text numberOfLines={1}>Dostępne rozmiary: <Sizes props={offer.availableSizes}/></Text>
                     <View style={{flexDirection:'row'}}><Text>Dostępne kolory:</Text><Colours props={offer.availableColours}/></View>
                     <Text>Materiał: <Text style={{fontWeight: 'bold'}}>{offer.material}</Text></Text>
                     <Text>Cena za parę: <Text style={{fontWeight:'bold'}}>{offer.price.toFixed(2).toString().replace('.',',')} zł</Text></Text>
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
         flex: 1,
         height: 125,
         margin: 5, 
-        elevation: 6,
+        elevation: 4,
         borderRadius: 5,
         shadowRadius: 10,
         shadowColor: 'black',

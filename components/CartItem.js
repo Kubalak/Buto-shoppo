@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { View, StyleSheet, Text, Image, Pressable,TouchableOpacity } from "react-native";
 import { Items } from "../storage/items";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 import {Button,Modal,} from "native-base"
 
@@ -86,14 +86,14 @@ function DeleteItem(key)
         <Text style={style.fontSettingsRest}>
             <View style={style.Arrows}>
             <Pressable onPress={()=>DecreaseAmount(elem.key)}>
-                <FontAwesome name ="arrow-left" size={25}/>
+                <FontAwesomeIcon icon="arrow-left" size={25}/>
             </Pressable>
             </View>
                             Ilość: {elem.amount}
 
             <View style={style.Arrows}>
             <Pressable onPress={()=>IncreaseAmount(elem.key)}>
-                <FontAwesome name ="arrow-right" size={25}/>
+                <FontAwesomeIcon icon="arrow-right" size={25}/>
             </Pressable>
             </View>
         </Text>
@@ -101,7 +101,7 @@ function DeleteItem(key)
         
 <View style={style.TrashBin}>   
         <Pressable onPress={()=>setShowModal(true)}>
-            <FontAwesome name ="trash" size={24}/>
+            <FontAwesomeIcon icon="trash" size={24}/>
         </Pressable>
         
 <View>    
