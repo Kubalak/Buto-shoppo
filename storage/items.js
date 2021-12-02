@@ -28,7 +28,7 @@ class Items {
             material: 'Tworzywo sztuczne',
             availableSizes: [40,41,42,43,44],
             availableColours: [{key: 1, colour:'#AAAAAA'},{key: 2,  colour: '#BBBBBB'}, {key: 3, colour: '#CCCCCC'}, {key: 4, colour: '#DDDDDD'},{key: 5, colour: '#AAAAAA'}],
-            price: 400.0
+            price: 400.00
         },
         {
             key: 3, 
