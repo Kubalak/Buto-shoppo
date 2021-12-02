@@ -19,11 +19,11 @@ export default function Login({navigation})
                 <Modal.CloseButton/>
                 <Modal.Header>Logowanie nie powiodło się</Modal.Header>
                 <Modal.Body>
-                    <Text style={{color: "red"}}>
+                    <Text style={{fontSize: 15}}>
                         Wprowadzone dane logowania są niepoprawne.
                     </Text>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{backgroundColor: 'white'}}>
                     <Button onPress={()=>{setShowModal(false)}}>OK</Button>
                 </Modal.Footer>
             </Modal.Content>
@@ -67,7 +67,9 @@ export default function Login({navigation})
                     onChangeText={(password) => setPassword(password)}
                 />
             </View>
-            <Text>Zapomniałeś hasła?</Text>
+            <Pressable onPress={() => console.log("Zapomniało się")}>
+                <Text>Zapomniałeś hasła?</Text>
+            </Pressable>
             <MyModal/>
             <Pressable style={style.loginBtn} onPress={() => {Verify()}}><Text>Zaloguj</Text></Pressable>
             </ImageBackground>

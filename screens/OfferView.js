@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView,StyleSheet, TouchableOpacity,Text } from "react-native";
-import { ItemView } from ".";
+import ItemView  from "./ItemView";
 import {FontAwesome} from "@expo/vector-icons";
 
 export default function OfferView({navigation,route}) 
