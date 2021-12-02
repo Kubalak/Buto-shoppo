@@ -76,17 +76,18 @@ const style = StyleSheet.create(
             paddingTop: 10,
             flex: 1,
             height: 150,
-            
-        },
-        baseOffer: {
-            flex: 1,
-            flexDirection: 'row',
             elevation: 6,
             shadowRadius: 10,
             shadowColor: 'black',
             shadowOpacity: 13,
             shadowOffset: {widht: 0, height: 5},
             backgroundColor: '#F5F5F5',
+            
+        },
+        baseOffer: {
+            flex: 1,
+            flexDirection: 'row',
+            
         },
         props:{
 

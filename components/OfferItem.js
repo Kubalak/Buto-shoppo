@@ -27,12 +27,7 @@ const style = StyleSheet.create({
     default:{
         flex: 1,
         height: 125,
-        margin: 5,
-    },
-    base: {
-        flex: 1,
-        paddingTop: 5,
-        flexDirection: 'row',
+        margin: 5, 
         elevation: 6,
         borderRadius: 5,
         shadowRadius: 10,
@@ -40,6 +35,12 @@ const style = StyleSheet.create({
         shadowOpacity: 13,   
         shadowOffset: {widht: 0, height: 5},
         backgroundColor: '#F5F5F5',
+    },
+    base: {
+        flex: 1,
+        paddingTop: 5,
+        flexDirection: 'row',
+       
         
     },
     image:{
