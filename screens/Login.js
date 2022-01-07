@@ -5,9 +5,10 @@ import {View,StyleSheet,Text,Image,TextInput, Pressable, ImageBackground} from "
 import {Status} from "../storage/State";
 
 
-
 export default function Login({navigation})
 {
+ 
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -49,7 +50,7 @@ export default function Login({navigation})
     return(
         <View style={style.default}>
             <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-            <Image source={require('../assets/icon.png')} style={{width: 150, height: 150, resizeMode: 'stretch', marginBottom: 25}}/>
+            <Image source={require('../assets/icon.png')} style={{width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25}}/>
             <View style={style.input}>
                <TextInput
                   style={style.textInput}

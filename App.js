@@ -3,9 +3,19 @@ import { StyleSheet, Text, View, Image, StatusBar, Platform } from 'react-native
 import HomeNavigation from './navigation/HomeNavigation';
 import { NativeBaseProvider } from 'native-base';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faDeaf, faRadiation, faSpider, faTty } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faPlus, faImage, faEdit } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
-library.add(faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faDeaf, faRadiation, faSpider, faTty)
+library.add(
+  faTrash, 
+  faArrowLeft, 
+  faArrowRight, 
+  faShoppingCart, 
+  faCartPlus, 
+  faPlus,
+  faImage,
+  faEdit
+  )
 
 export default function App() {
    return (

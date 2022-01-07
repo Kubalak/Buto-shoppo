@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView,StyleSheet, TouchableOpacity,Text } from "react-native";
 import ItemView  from "./ItemView";
-import {FontAwesome} from "@expo/vector-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 
 export default function OfferView({navigation,route}) 
 {
@@ -10,7 +10,7 @@ export default function OfferView({navigation,route})
         <ScrollView style={style.default}>
             <ItemView route={route} navigation={navigation} style={{flex: 1}}/>
             <TouchableOpacity style={style.pressable}>
-                <Text style={{fontSize: 18}}>Edytuj <FontAwesome name="edit" size={18}/></Text>
+                <Text style={{fontSize: 18}}>Edytuj <FontAwesomeIcon icon="edit" size={18}/></Text>
             </TouchableOpacity>
         </ScrollView>
     );

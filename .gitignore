@@ -13,6 +13,7 @@ web-build/
 run.bat
 .idea/
 .vscode
+.env
 
 # macOS
 .DS_Store

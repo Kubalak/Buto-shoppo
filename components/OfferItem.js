@@ -48,6 +48,7 @@ const style = StyleSheet.create({
         marginTop: 10,
         width: 100,
         height: 100,
+        borderRadius: 10,
         resizeMode: 'stretch'
     }
 })

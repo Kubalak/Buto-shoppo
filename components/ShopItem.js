@@ -99,7 +99,7 @@ const style = StyleSheet.create(
         },
         title:{
             alignSelf:'center',
-            paddingTop: 10,
+            paddingTop: 5,
             marginBottom: 15,
             fontWeight: 'bold',
             fontStyle: 'italic',
@@ -108,7 +108,8 @@ const style = StyleSheet.create(
         image:
         {
             width: 100, 
-            height: 100, 
+            height: 100,
+            borderRadius: 10, 
             resizeMode: 'stretch',
             alignSelf:'flex-start', 
         },
@@ -127,7 +128,7 @@ const style = StyleSheet.create(
         },
         buyOffer:{
             flex: 1,
-            paddingTop: 35
+            paddingTop: 30
         },
         buyPrt: {
             marginTop: 30,

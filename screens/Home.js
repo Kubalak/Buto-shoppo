@@ -1,21 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {StyleSheet,View, Text, FlatList} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import ShopItem from '../components/ShopItem';
 import HomeBar from '../navigation/HomeBar';
 import MyOffersBar from '../navigation/MyOffersBar';
 import MyOffers from "./MyOffers";
-import {Items} from '../storage/items';
 import NewOffer from "./NewOffer";
+import axios from "axios";
+import { Items } from "../storage/items";
+import {API_HOST, API_URL} from "@env";
 
 function HomeView({navigation}){
+    const [data, setData] = useState(null);
+    
+  useEffect(() => {
+    axios.get(`http://${API_HOST}/${API_URL}/get`).then( function(response){ //Uses enviromental variables in the .env file
+        setData(response.data);
+      })
+      .catch(function (error){
+        console.log(error);
+        setData(Items.shopItems);
+      })
+
+  }, []);
 
     return (
         <View style={{backgroundColor: 'white', flex:1}}>
-    <FlatList 
-        data={Items.shopItems}
-        renderItem={({item}) => <ShopItem item={item}/>}/>         
-    </View>);
+            <FlatList 
+                data={data}
+                renderItem={({item}) => <ShopItem item={item}/>}>
+            </FlatList>     
+        </View>
+    );
 }
 const Drawer = createDrawerNavigator();
 
