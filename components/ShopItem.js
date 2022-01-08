@@ -12,7 +12,7 @@ export default function ShopItem (props) {
     const navigation = useNavigation();
     const toast = useToast();
     props = props.item;
-
+    props.price = parseFloat(props.price);
 
     function AddToCart(){
         
@@ -57,9 +57,9 @@ export default function ShopItem (props) {
                 <Text style={style.title} numberOfLines={1}>{props.title}</Text>
                 <View style={style.props}>
                     <Text numberOfLines={1}>· Materiał: <Text numberOfLines={1} style={{fontWeight: 'bold'}}>{props.material}</Text></Text>
-                    <Text numberOfLines={1}>· Rozmiary: <Sizes props={props.availableSizes}/></Text>
+                    <Text numberOfLines={1}>· Rozmiary: <Sizes props={JSON.parse(props.availableSizes)}/></Text>
                     <Text numberOfLines={1}>· Dostępne kolory: </Text>
-                    <SafeAreaView style={{flexDirection: 'row', flexShrink: 1, width: 90}}><Colours props={props.availableColours}/></SafeAreaView>
+                    <SafeAreaView style={{flexDirection: 'row', flexShrink: 1, width: 90}}><Colours props={JSON.parse(props.availableColours)}/></SafeAreaView>
                     
                 </View>
             </View>

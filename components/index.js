@@ -1,4 +1,4 @@
 import ShopItem from './ShopItem';
 
 
-export {ShopItem};
+export { ShopItem };

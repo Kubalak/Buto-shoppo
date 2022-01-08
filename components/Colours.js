@@ -1,11 +1,10 @@
 import React from "react";
-import { Text,View, FlatList } from "react-native";
+import { Text, View, FlatList } from "react-native";
 
-function RenderItem({props})
-{
-    return(
-    <View style=
-            {{ 
+function RenderItem({ props }) {
+    return (
+        <View style=
+            {{
                 marginLeft: 10,
                 marginTop: 5,
                 width: 15,
@@ -17,17 +16,17 @@ function RenderItem({props})
     );
 }
 
-export default function Colours({props})
-{
+export default function Colours({ props }) {
 
 
-    return(
+    return (
         <>
-        <FlatList
-        data={props}
-        renderItem={({item}) => <RenderItem props={item}/>}
-        numColumns={5}
-        />
+            <FlatList
+                data={props}
+                renderItem={({ item }) => <RenderItem props={item} />}
+                numColumns={5}
+                nestedScrollEnabled={true}
+            />
         </>
     );
 }

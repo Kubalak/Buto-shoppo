@@ -39,7 +39,7 @@ export default function Home({navigation})
 {
 
     return(
-        <Drawer.Navigator initialRouteName = "Sklep" screenOptions ={{
+        <Drawer.Navigator initialRouteName = "Sklep"  screenOptions ={{
             headerStyle:{
                 backgroundColor: '#FFFFFF',
                 elevation: 5,
