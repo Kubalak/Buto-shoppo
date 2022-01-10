@@ -6,20 +6,25 @@ import HomeBar from '../navigation/HomeBar';
 import MyOffersBar from '../navigation/MyOffersBar';
 import MyOffers from "./MyOffers";
 import NewOffer from "./NewOffer";
+import About from "./About";
 import axios from "axios";
-import { Items } from "../storage/items";
-import {API_HOST, API_URL} from "@env";
+import {API_HOST, API_URL, APP_TOKEN} from "@env";
 
 function HomeView({navigation}){
     const [data, setData] = useState(null);
     
   useEffect(() => {
-    axios.get(`http://${API_HOST}/${API_URL}/get`).then( function(response){ //Uses enviromental variables in the .env file
+    axios.get(`http://${API_HOST}/${API_URL}/get`,
+    {
+      headers: {
+        'Authorization': `Basic ${APP_TOKEN}`
+      }
+    }).then( function(response){ //Uses enviromental variables in the .env file
         setData(response.data);
       })
       .catch(function (error){
         console.log(error);
-        setData(Items.shopItems);
+        //setData(Items.shopItems);
       })
 
   }, []);
@@ -59,6 +64,10 @@ export default function Home({navigation})
               <Drawer.Screen name="Nowa oferta" component={NewOffer} 
             options={({navigation, route})=> ({
                 headerTitle: (props) => <Text>Nowa oferta</Text>,
+              })}/>
+              <Drawer.Screen name="Informacje" component={About} 
+            options={({navigation, route})=> ({
+                headerTitle: (props) => <Text>O autorach</Text>,
               })}/>
         </Drawer.Navigator>
     );

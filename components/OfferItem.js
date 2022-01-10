@@ -5,6 +5,8 @@ import Colours from "./Colours";
 
 export default function OfferItem({ navigation, offer }) {
 
+    offer.price = parseFloat(offer.price);
+
     return (
         <TouchableOpacity style={style.default} onPress={() => navigation.navigate("offerView", { props: offer })}>
             <View style={style.base}>
@@ -12,8 +14,8 @@ export default function OfferItem({ navigation, offer }) {
                     <Image source={{ uri: offer.uri }} style={style.image} /></View>
                 <View style={{ flex: 2, paddingTop: 5 }}>
                     <Text style={{ fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center', fontSize: 15 }}>{offer.title}</Text>
-                    <Text numberOfLines={1}>Dostępne rozmiary: <Sizes props={offer.availableSizes} /></Text>
-                    <View style={{ flexDirection: 'row' }}><Text>Dostępne kolory:</Text><Colours props={offer.availableColours} /></View>
+                    <Text numberOfLines={1}>Dostępne rozmiary: <Sizes props={JSON.parse(offer.availableSizes)} /></Text>
+                    <View style={{ flexDirection: 'row' }}><Text>Dostępne kolory:</Text><Colours props={JSON.parse(offer.availableColours)} /></View>
                     <Text>Materiał: <Text style={{ fontWeight: 'bold' }}>{offer.material}</Text></Text>
                     <Text>Cena za parę: <Text style={{ fontWeight: 'bold' }}>{offer.price.toFixed(2).toString().replace('.', ',')} zł</Text></Text>
 

@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View,Text, StyleSheet, FlatList} from 'react-native';
 import OfferItem from '../components/OfferItem';
 import { Items } from '../storage/items';
-import { Status } from '../storage/State';
+import {API_HOST, API_URL, APP_TOKEN} from "@env";
+import axios from 'axios';
 
 export default function MyOffers({navigation})
 {
-    let data = Items.shopItems.filter(function(elem) {
-        return elem.createdBy === Status.loggedAs
-    });
+    const [data, setData] = useState(null);
+    
+    useEffect(() => {
+      axios.get(`http://${API_HOST}/${API_URL}/get?createdBy=2`,
+      {
+        headers: {
+          'Authorization': `Basic ${APP_TOKEN}`
+        }
+      }).then( function(response){ //Uses enviromental variables in the .env file
+          setData(response.data);
+        })
+        .catch(function (error){
+          console.log(error);
+        })
+  
+    }, []);
 
     return(
     <View style={style.default}>

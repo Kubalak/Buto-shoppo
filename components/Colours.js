@@ -7,6 +7,7 @@ function RenderItem({ props }) {
             {{
                 marginLeft: 10,
                 marginTop: 5,
+                elevation: 2,
                 width: 15,
                 height: 15,
                 borderRadius: 2,

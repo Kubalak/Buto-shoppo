@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, FlatList, Text, Alert, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import axios from 'axios';
-import { API_HOST, API_URL } from "@env";
+import { API_HOST, API_URL, APP_TOKEN } from "@env";
 import Colours from '../components/Colours';
 import { Camera } from 'expo-camera';
 // Hierr oskryptować formularz!!!
@@ -47,7 +47,7 @@ export default function NewOffer({ navigation }) {
         function Mycam() {
             return (
                 <>
-                    {hasPermission === true ?
+                    {(hasPermission === true) ?
                         <Camera style={{ flex: 1, width: 200 }} type={type}
                             ratio={'1:1'}
                             ref={camera}>
@@ -80,15 +80,20 @@ export default function NewOffer({ navigation }) {
 
         function sendForm() {
             axios.post(`http://${API_HOST}/${API_URL}/post`, {
-                title: title,
-                material: material,
-                price: price,
-                availableSizes: [39,40],//availableSizes,
-                availableColours: ['#ABECDF'],//availableColours,
-                uri: base64
+                    createdBy: 2,
+                    title: title,
+                    material: material,
+                    price: price,
+                    availableSizes: [39,40],//availableSizes,
+                    availableColours: ['#ABECDF', "#DDDEEE"],//availableColours,
+                    uri: base64
+                },
+                {
+                    headers:{
+                    'Authorization': `Basic ${APP_TOKEN}`
+                }
             })
                 .then(function (response) {
-                    console.log(response.data);
                     if(response.data.data)
                         Alert.alert("Informacja", response.data.data);
                     setTitle('');
@@ -103,8 +108,19 @@ export default function NewOffer({ navigation }) {
                 })
                 .catch(function (error) {
                     if (error.response) {
+                        console.log(error.response.data);
                         if (error.response.data && error.response.data.data != null && error.response.data.data != undefined)
-                            Alert.alert("Błąd serwera", "Serwer zwrócił komunikat:\n" + error.response.data.data);
+                        {
+                            var message = "";
+                            if(Array.isArray(error.response.data.data))
+                            {
+                                error.response.data.data.forEach(element => {
+                                    message += element + "\n";
+                                });
+                            }
+                            else message = error.response.data.data;
+                            Alert.alert("Błąd serwera", "Serwer zwrócił komunikat:\n" + message);
+                        }
                         else {
                             console.log(error.response.status);
                             console.log(error.response.data);

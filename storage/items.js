@@ -1,4 +1,7 @@
 class Items {
+    /**
+     * @deprecated This is no longer in use. Using this will cause your app to break.
+     */
     static shopItems = [
         {
             key: 0,
