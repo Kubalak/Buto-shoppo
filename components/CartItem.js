@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import { Items } from "../storage/items";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Modal, } from "native-base"
+import { Button, Modal, Spinner, Heading } from "native-base";
+import axios from "axios";
+import { API_HOST, API_URL, APP_TOKEN } from "@env";
 
 export default function CartItem({ props }) {
     const navigation = useNavigation();
     const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false)
+    const [element, setElement] = useState(null);
+
+    useEffect(() => {
+        axios.get(`http://${API_HOST}/${API_URL}/get`,
+            {
+                headers: {
+                    'Authorization': `Basic ${APP_TOKEN}`
+                },
+                params:{
+                    key: props.key
+                },
+                
+            }).then(function (response) { //Uses enviromental variables in the .env file
+                setElement(response.data[0]);
+            })
+            .catch(function (error) {
+                console.log(error);
+                //setData(Items.shopItems);
+            })
+    }, []);
+
 
     function listRemove(arr, key) {
 
@@ -18,13 +41,10 @@ export default function CartItem({ props }) {
     }
 
     function IncreaseAmount(key) {
-        console.log("Klucz", key)
         for (var item of Items.cart) {
             if (key === item.key) {
-                console.log(item.amount);
                 item.amount++;
                 setAmount(item.amount);
-                console.log(item.amount);
                 break;
             }
         }
@@ -32,14 +52,11 @@ export default function CartItem({ props }) {
     }
 
     function DecreaseAmount(key) {
-        console.log("Klucz", key)
         for (var item of Items.cart) {
             if (key === item.key) {
-                console.log(item.amount);
                 if (item.amount > 1)
                     item.amount--;
                 setAmount(item.amount);
-                console.log(item.amount);
                 break;
             }
         }
@@ -51,38 +68,42 @@ export default function CartItem({ props }) {
         setShowModal(false);
         Items.cart.ForceUpdate
     }
-
-    let elem = null;
-
-    for (var item of Items.shopItems) {
-        if (props.key === item.key) {
-            elem = item;
-            elem.amount = props.amount;
-            break;
-        }
+    /**
+     * W przypadku gdy dane się wczytują.
+     */
+    if (element === null) {
+        return (
+            <View style={{ ...style.default, justifyContent: 'center' }}>
+                <Spinner accessibilityLabel="Loading posts" />
+                <Heading color="primary.500" fontSize="md">
+                    Ładowanie...
+                </Heading>
+            </View>
+        );
     }
+
 
     return (
         <View style={style.default}>
 
             <Text style={style.fontSettingsTitle}>
-                {elem.title}
+                {element.title}
             </Text>
 
-            <Image source={{ uri: elem.uri }} style={style.image} />
+            <Image source={{ uri: element.uri }} style={style.image} />
 
 
 
             <Text style={style.fontSettingsRest}>
                 <View style={style.Arrows}>
-                    <Pressable onPress={() => DecreaseAmount(elem.key)}>
+                    <Pressable onPress={() => DecreaseAmount(element.key)}>
                         <FontAwesomeIcon icon="arrow-left" size={25} />
                     </Pressable>
                 </View>
-                Ilość: {elem.amount}
+                Ilość: {props.amount}
 
                 <View style={style.Arrows}>
-                    <Pressable onPress={() => IncreaseAmount(elem.key)}>
+                    <Pressable onPress={() => IncreaseAmount(element.key)}>
                         <FontAwesomeIcon icon="arrow-right" size={25} />
                     </Pressable>
                 </View>
@@ -97,7 +118,7 @@ export default function CartItem({ props }) {
                 <View>
                     <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
                         <Modal.Content maxWidth='400px'>
-                            <Modal.Header alignContent='center'>Usuwanie prodktu {elem.title} </Modal.Header>
+                            <Modal.Header alignContent='center'>Usuwanie prodktu {element.title} </Modal.Header>
                             <Modal.Body>
                                 Czy jesteś pewny że chcesz usunąć ten element z koszyka?
                             </Modal.Body>
@@ -107,7 +128,7 @@ export default function CartItem({ props }) {
                                         Anuluj
                                     </Button>
 
-                                    <Button variant='solid' onPress={() => DeleteItem(elem.key)}>
+                                    <Button variant='solid' onPress={() => DeleteItem(element.key)}>
                                         Potwierdź
                                     </Button>
                                 </Button.Group>
@@ -120,16 +141,17 @@ export default function CartItem({ props }) {
 
 
             <Text style={style.fontSettingsRest}>
-                Cena za pare: {elem.price} zł
+                Cena za pare: {element.price} zł
             </Text>
 
             <Text style={style.fontSettingsRest}>
-                Cena całkowita: {(elem.amount * elem.price).toFixed(2)} zł
+                Cena całkowita: {(parseFloat(element.price) * props.amount).toFixed(2)} zł
             </Text>
 
 
         </View>
     );
+
 }
 
 
@@ -171,18 +193,14 @@ const style = StyleSheet.create({
     fontSettingsRest:
     {
         fontSize: 18,
-    }
-    ,
-
+    },
     TrashBin:
     {
         width: 30,
         borderRadius: 50,
         backgroundColor: 'red',
         alignItems: 'center',
-    }
-    ,
-
+    },
     Arrows:
     {
         marginRight: 20,

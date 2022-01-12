@@ -80,7 +80,6 @@ export default function NewOffer({ navigation }) {
 
         function sendForm() {
             axios.post(`http://${API_HOST}/${API_URL}/post`, {
-                    createdBy: 2,
                     title: title,
                     material: material,
                     price: price,
