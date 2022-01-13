@@ -2,14 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, FlatList, Text, Alert, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import axios from 'axios';
-import { API_HOST, API_URL, APP_TOKEN } from "@env";
 import Colours from '../components/Colours';
 import { Camera } from 'expo-camera';
 // Hierr oskryptować formularz!!!
 
 function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
-
+const axiosInstance = axios.create();
 
 export default function NewOffer({ navigation }) {
 
@@ -79,19 +78,14 @@ export default function NewOffer({ navigation }) {
         }
 
         function sendForm() {
-            axios.post(`http://${API_HOST}/${API_URL}/post`, {
+            axiosInstance.post("/post", {
                     title: title,
                     material: material,
                     price: price,
                     availableSizes: [39,40],//availableSizes,
                     availableColours: ['#ABECDF', "#DDDEEE"],//availableColours,
                     uri: base64
-                },
-                {
-                    headers:{
-                    'Authorization': `Basic ${APP_TOKEN}`
-                }
-            })
+                })
                 .then(function (response) {
                     if(response.data.data)
                         Alert.alert("Informacja", response.data.data);

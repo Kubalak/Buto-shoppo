@@ -10,25 +10,21 @@ import NewOffer from "./NewOffer";
 import Account from "./Account";
 import About from "./About";
 import axios from "axios";
-import { API_HOST, API_URL, APP_TOKEN } from "@env";
+
+const axiosInstance = axios.create();
 
 function HomeView({ navigation }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://${API_HOST}/${API_URL}/get`, {
-      headers: {
-        'Authorization': `Basic ${APP_TOKEN}`
-      },
-    })
+    axiosInstance.get("/get")
       .then(function (response) { //Uses enviromental variables in the .env file
         setData(response.data);
       })
       .catch(function (error) {
         console.log(error);
         console.log(error.response.data);
-        if(error.response && error.response.data.data)
-        {
+        if (error.response && error.response.data.data) {
           Alert.alert("Błąd!", error.response.data.data);
         }
       })
@@ -87,7 +83,7 @@ export default function Home({ navigation }) {
         options={({ navigation, route }) => ({
           headerTitle: (props) => <Text>O autorach</Text>,
         })} />
-        <Drawer.Screen name="Konto" component={Account}
+      <Drawer.Screen name="Konto" component={Account}
         options={({ navigation, route }) => ({
           headerTitle: (props) => <Text>Moje konto</Text>,
         })} />

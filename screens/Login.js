@@ -5,8 +5,8 @@ import { View, StyleSheet, Text, Image, TextInput, Pressable, ImageBackground } 
 import { useToast } from "native-base";
 import { Status } from "../storage/State";
 import axios from "axios";
-import { API_HOST, API_URL, APP_TOKEN } from "@env";
 
+const axiosInstance = axios.create();
 
 export default function Login({ navigation, route }) {
 
@@ -18,38 +18,29 @@ export default function Login({ navigation, route }) {
 
     useEffect(() => {
         if (route.params && route.params.logout && route.params.logout === true) {
-            axios.get(`http://${API_HOST}/${API_URL}/logout`, {
-                headers: {
-                    'Authorization': `Basic ${APP_TOKEN}`
-                }
-            }).then(function (response) {
-                toast.show({
-                    title: "Informacja",
-                    status: "success",
-                    description: response.data.data ? response.data.data : 'Wylogowano',
-                    duration: 1500
-                });
-            }).catch(function (error) {
-                console.log(error);
-                console.log(error.response);
-                console.log(APP_TOKEN);
-            })
+            axiosInstance.get("/logout")
+                .then(function (response) {
+                    toast.show({
+                        title: "Informacja",
+                        status: "success",
+                        description: response.data.data ? response.data.data : 'Wylogowano',
+                        duration: 1500
+                    });
+                }).catch(function (error) {
+                    console.log(error);
+                    console.log(error.response);
+                })
         }
         else {
-            axios.post(`http://${API_HOST}/${API_URL}/login`, {
+            axiosInstance.post("/login", {
 
                 username: Status.email,
                 password: Status.password
-            },
-                {
-                    headers: {
-                        'Authorization': `Basic ${APP_TOKEN}`
-                    }
-                }).then(function (response) {
-                    navigation.replace('home');
+            }).then(function (response) {
+                navigation.replace('home');
 
-                }).catch(function (error) {
-                })
+            }).catch(function (error) {
+            })
         }
     }, []);
 
@@ -73,17 +64,12 @@ export default function Login({ navigation, route }) {
     }
 
     function Verify() {
-        axios.post(`http://${API_HOST}/${API_URL}/login`, {
+        axiosInstance.post("/login", {
 
             username: email,
             password: password
-        },
-            {
-                headers: {
-                    'Authorization': `Basic ${APP_TOKEN}`
-
-                }
-            }).then(function (response) {
+        })
+        .then(function (response) {
                 Status.username = email;
                 Status.password = password;
                 Status.loggedAs = response.data.id;

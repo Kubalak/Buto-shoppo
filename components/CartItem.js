@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Modal, Spinner, Heading } from "native-base";
 import axios from "axios";
-import { API_HOST, API_URL, APP_TOKEN } from "@env";
+
+const axiosInstance = axios.create();
 
 export default function CartItem({ props }) {
     const navigation = useNavigation();
@@ -14,11 +15,8 @@ export default function CartItem({ props }) {
     const [element, setElement] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://${API_HOST}/${API_URL}/get`,
+        axiosInstance.get("/get",
             {
-                headers: {
-                    'Authorization': `Basic ${APP_TOKEN}`
-                },
                 params:{
                     key: props.key
                 },
