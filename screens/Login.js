@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Modal } from "native-base";
 import { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image, TextInput, Pressable, ImageBackground } from "react-native";
+import { View, StyleSheet, Text, Image, TextInput, Pressable, ImageBackground,Alert } from "react-native";
 import { useToast } from "native-base";
-import { Status } from "../storage/State";
+import Config from "../config";
 import axios from "axios";
 
 const axiosInstance = axios.create();
@@ -12,11 +12,12 @@ export default function Login({ navigation, route }) {
 
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState(''); 
     const [showModal, setShowModal] = useState(false);
     const toast = useToast();
 
     useEffect(() => {
+        Config(false);
         if (route.params && route.params.logout && route.params.logout === true) {
             axiosInstance.get("/logout")
                 .then(function (response) {
@@ -34,8 +35,8 @@ export default function Login({ navigation, route }) {
         else {
             axiosInstance.post("/login", {
 
-                username: Status.email,
-                password: Status.password
+                username: "",
+                password: ""
             }).then(function (response) {
                 navigation.replace('home');
 
@@ -70,10 +71,6 @@ export default function Login({ navigation, route }) {
             password: password
         })
         .then(function (response) {
-                Status.username = email;
-                Status.password = password;
-                Status.loggedAs = response.data.id;
-                Status.isLoggedin = true;
                 navigation.replace('home');
 
             }).catch(function (error) {
@@ -83,7 +80,10 @@ export default function Login({ navigation, route }) {
                     }
                     console.log(error.response.data);
                 }
-                else console.log(error);
+                else {
+                    console.log(error);
+                    Alert.alert("Błąd", "Problem z połączeniem z serwerem!")
+                }
             })
     }
     return (

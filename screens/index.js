@@ -4,5 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import ItemView from './ItemView';
 import OfferView from './OfferView';
+import Account from './Account';
+import About from './About'
 
-export {Home, Cart, MyOffers, Login, ItemView, OfferView};
+export {Home, Cart, MyOffers, Login, ItemView, OfferView, Account, About};

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View,Text, StyleSheet, FlatList} from 'react-native';
 import OfferItem from '../components/OfferItem';
+import { Spinner, HStack, Heading } from "native-base";
+import Config from "../config";
 import axios from 'axios';
 
 const axiosInstance = axios.create();
@@ -9,6 +11,7 @@ export default function MyOffers({navigation})
 {
     const [data, setData] = useState(null);
     useEffect(() => {
+      Config(false);
       axiosInstance.get("/get",
       {
         params:{
@@ -22,6 +25,20 @@ export default function MyOffers({navigation})
         })
   
     }, []);
+
+    if(data === null)
+    {
+      return (
+        <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, backgroundColor: 'white' }}>
+          <HStack space={2} alignItems="center">
+            <Spinner accessibilityLabel="Loading posts" />
+            <Heading color="primary.500" fontSize="md">
+              Ładowanie...
+            </Heading>
+          </HStack>
+        </View>
+      );
+    }
 
     return(
     <View style={style.default}>

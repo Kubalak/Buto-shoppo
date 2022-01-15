@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Status } from "../storage/State";
 
 export default function Account({ navigation }) {
     return (
         <View style={style.default}>
-            <View style={{ textAlign: 'center', alignItems: 'center', paddingTop: 40}}><Text>
-                Akcje
-            </Text>
+            <View style={{ textAlign: 'center', alignItems: 'center', paddingTop: 40 }}>
+                <Text style={{fontSize: 18}}>
+                    Akcje
+                </Text>
             </View>
-            <View style={{ alignItems: 'center', paddingTop: 20}}>
+            <View style={{ alignItems: 'center', paddingTop: 20 }}>
                 <TouchableOpacity style={style.logout} onPress={() => { navigation.replace('login', { logout: true }) }}>
                     <Text>Wyloguj</Text>
                 </TouchableOpacity>
@@ -26,8 +26,9 @@ const style = StyleSheet.create({
 
     },
     logout: {
-        backgroundColor: '#FFEFEE',
-        width: 120,
+        backgroundColor: '#40F98F',
+        elevation: 4,
+        width: 150,
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',

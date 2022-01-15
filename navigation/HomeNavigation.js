@@ -2,23 +2,14 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { StyleSheet, Text,Button , View, Alert, TouchableOpacity,StatusBar, Platform} from 'react-native';
-import {Cart,Menu,Home,Login,ItemView, OfferView} from '../screens/index';
+import { StyleSheet } from 'react-native';
+import {Cart,Home,Login,ItemView, OfferView} from '../screens/index';
 import CartBar from './CartBar';
 import ItemViewBar from './ItemViewBar';
-
-/*function Menu(){
-    Alert.alert('You have pressed menu!');
-}
-function Cart(){
-    Alert.alert('You have pressed cart!');
-}*/
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeNavigation(){
-    //console.log(style.default.height)
-   // console.log(style.default.paddingTop)
     return(
       <NavigationContainer>
           <Stack.Navigator screenOptions={{

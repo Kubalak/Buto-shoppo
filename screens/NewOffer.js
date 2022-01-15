@@ -3,6 +3,7 @@ import { View, FlatList, Text, Alert, TextInput, TouchableOpacity, StyleSheet, I
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import axios from 'axios';
 import Colours from '../components/Colours';
+import Config from "../config";
 import { Camera } from 'expo-camera';
 // Hierr oskryptować formularz!!!
 
@@ -35,6 +36,7 @@ export default function NewOffer({ navigation }) {
         }
 
         useEffect(() => {
+            Config(false);
             (async () => {
                 const { status } = await Camera.requestCameraPermissionsAsync();
                 setHasPermission(status === 'granted');
@@ -101,7 +103,6 @@ export default function NewOffer({ navigation }) {
                 })
                 .catch(function (error) {
                     if (error.response) {
-                        console.log(error.response.data);
                         if (error.response.data && error.response.data.data != null && error.response.data.data != undefined)
                         {
                             var message = "";
@@ -112,7 +113,7 @@ export default function NewOffer({ navigation }) {
                                 });
                             }
                             else message = error.response.data.data;
-                            Alert.alert("Błąd serwera", "Serwer zwrócił komunikat:\n" + message);
+                            Alert.alert("Nie można dodać oferty!", message);
                         }
                         else {
                             console.log(error.response.status);

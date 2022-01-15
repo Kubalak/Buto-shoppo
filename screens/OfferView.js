@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView,StyleSheet, TouchableOpacity,Text } from "react-native";
-import ItemView  from "./ItemView";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
+import ItemView  from "./ItemView";
 
 export default function OfferView({navigation,route}) 
 {

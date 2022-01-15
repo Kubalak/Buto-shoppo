@@ -4,6 +4,7 @@ import { Items } from "../storage/items";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Modal, Spinner, Heading } from "native-base";
+import Config from "../config";
 import axios from "axios";
 
 const axiosInstance = axios.create();
@@ -15,6 +16,7 @@ export default function CartItem({ props }) {
     const [element, setElement] = useState(null);
 
     useEffect(() => {
+        Config(false);
         axiosInstance.get("/get",
             {
                 params:{
