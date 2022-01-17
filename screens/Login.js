@@ -93,8 +93,9 @@ export default function Login({ navigation, route }) {
                 <View style={style.input}>
                     <TextInput
                         style={style.textInput}
-                        placeholder="e-mail"
+                        placeholder="E-mail"
                         placeholderTextColor="#8b8b8b"
+                        value={email}
                         onChangeText={(email) => setEmail(email)}
                     />
                 </View>
@@ -104,6 +105,7 @@ export default function Login({ navigation, route }) {
                         placeholder="Hasło"
                         placeholderTextColor="#8b8b8b"
                         secureTextEntry={true}
+                        value={password}
                         onChangeText={(password) => setPassword(password)}
                     />
                 </View>
@@ -128,6 +130,7 @@ const style = StyleSheet.create({
         height: 45,
         marginBottom: 20,
         alignItems: "center",
+        elevation: 3
     },
     textInput: {
         height: 50,
@@ -139,6 +142,7 @@ const style = StyleSheet.create({
         backgroundColor: "#11D766",
         borderRadius: 30,
         width: "70%",
+        elevation: 4,
         height: 45,
         marginTop: 20,
         marginBottom: 20,

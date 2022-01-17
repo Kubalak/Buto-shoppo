@@ -10,8 +10,10 @@ const axiosInstance = axios.create();
 export default function MyOffers({navigation})
 {
     const [data, setData] = useState(null);
-    useEffect(() => {
-      Config(false);
+    const[isLoading, setIsLoading] = useState(false);
+
+    function getData(){
+      setIsLoading(true);
       axiosInstance.get("/get",
       {
         params:{
@@ -23,10 +25,14 @@ export default function MyOffers({navigation})
         .catch(function (error){
           console.log(error);
         })
-  
+        setIsLoading(false);
+    }
+
+    useEffect(() => {
+      getData();
     }, []);
 
-    if(data === null)
+    if(data === null || isLoading)
     {
       return (
         <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, backgroundColor: 'white' }}>
@@ -45,6 +51,8 @@ export default function MyOffers({navigation})
         <FlatList 
             data={data}
             renderItem={({item}) => <OfferItem navigation={navigation} offer={item}/>}
+            onRefresh={() => getData()}
+            refreshing={isLoading}
         />
     </View>
     );

@@ -17,27 +17,33 @@ const axiosInstance = axios.create();
 
 function HomeView({ navigation }) {
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   
+  function getData(){
+    setIsLoading(true);
+    axiosInstance.get("/get")
+    .then(function (response) { //Uses enviromental variables in the .env file
+      setData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log(error.response.data);
+      setData({error:true})
+      if (error.response && error.response.data && error.response.data.data) {
+        Alert.alert("Błąd!", error.response.data.data);
+      }
+    })
+    setIsLoading(false);
+  }
   
   useEffect(() => {
     
     Config(false);
-    axiosInstance.get("/get")
-      .then(function (response) { //Uses enviromental variables in the .env file
-        setData(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-        console.log(error.response.data);
-        setData({error:true})
-        if (error.response && error.response.data && error.response.data.data) {
-          Alert.alert("Błąd!", error.response.data.data);
-        }
-      })
+    getData();
 
   }, []);
 
-  if (data === null) {
+  if (data === null || isLoading) {
     return (
       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, backgroundColor: 'white' }}>
         <HStack space={2} alignItems="center">
@@ -65,7 +71,11 @@ function HomeView({ navigation }) {
     <View style={{ backgroundColor: 'white', flex: 1 }}>
       <FlatList
         data={data}
-        renderItem={({ item }) => <ShopItem item={item} />}>
+        renderItem={({ item }) => <ShopItem item={item} />}
+        onRefresh={() => getData()}
+        refreshing={isLoading}>
+          
+        
       </FlatList>
     </View>
   );
