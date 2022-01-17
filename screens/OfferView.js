@@ -9,7 +9,7 @@ export default function OfferView({navigation,route})
     return (
         <ScrollView style={style.default}>
             <ItemView route={route} navigation={navigation} style={{flex: 1}}/>
-            <TouchableOpacity style={style.pressable}>
+            <TouchableOpacity style={style.pressable} onPress={() => navigation.push('editOffer', {params:route.params})}>
                 <Text style={{fontSize: 18}}>Edytuj <FontAwesomeIcon icon="edit" size={18}/></Text>
             </TouchableOpacity>
         </ScrollView>

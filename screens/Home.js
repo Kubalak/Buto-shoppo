@@ -109,6 +109,7 @@ export default function Home({ navigation }) {
       <Drawer.Screen name="Nowa oferta" component={NewOffer}
         options={({ navigation, route }) => ({
           headerTitle: (props) => <Text>Nowa oferta</Text>,
+          title: "Nowa oferta",
           drawerIcon: ({focused,size}) => <FontAwesomeIcon icon="plus-square" size={size} color={focused ? '#005DFF':'#000'}/>
         })} />
       <Drawer.Screen name="Informacje" component={About}

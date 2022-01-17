@@ -6,5 +6,5 @@ import ItemView from './ItemView';
 import OfferView from './OfferView';
 import Account from './Account';
 import About from './About'
-
-export {Home, Cart, MyOffers, Login, ItemView, OfferView, Account, About};
+import EditOffer from './EditOffer';
+export {Home, Cart, MyOffers, Login, ItemView, OfferView, Account, About, EditOffer};

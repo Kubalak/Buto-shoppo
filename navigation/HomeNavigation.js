@@ -2,8 +2,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import {Cart,Home,Login,ItemView, OfferView} from '../screens/index';
+import { StyleSheet, Text } from 'react-native';
+import {Cart,Home,Login,ItemView, OfferView, EditOffer} from '../screens/index';
 import CartBar from './CartBar';
 import ItemViewBar from './ItemViewBar';
 
@@ -48,6 +48,13 @@ export default function HomeNavigation(){
                headerTitle: (props) => <ItemViewBar props={route.params.props}/>,
              })}
             />
+            <Stack.Screen
+            name="editOffer"
+            component={EditOffer}
+            options={({navigation, route})=> ({
+              headerTitle: (props) => <Text>Edycja oferty</Text>,
+            })}
+           />
             
           </Stack.Navigator>
       </NavigationContainer>  

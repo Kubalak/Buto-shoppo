@@ -5,23 +5,25 @@ import axios from 'axios';
 import Colours from '../components/Colours';
 import Config from "../config";
 import { Camera } from 'expo-camera';
+import Sizes from '../components/Sizes';
 // Hierr oskryptować formularz!!!
 
 function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
 const axiosInstance = axios.create();
 
-export default function NewOffer({ navigation }) {
-
+export default function NewOffer({ navigation, route }) {
+    let props = null;
+    props = route.params ? route.params.props :null;
 
     function OfferComponent() {
-        const [title, setTitle] = useState('');
-        const [material, setMaterial] = useState('');
-        const [price, setPrice] = useState('');
-        const [availableSizes, setAvailableSizes] = useState([]);
-        const [availableColours, setAvailablecolours] = useState([]);
-        const [uri, setUri] = useState('');
-        const [base64, setBase64] = useState(null);
+        const [title, setTitle] = useState((props && props.title)?props.title:'');
+        const [material, setMaterial] = useState((props && props.material)?props.material:'');
+        const [price, setPrice] = useState((props && props.price)?`${props.price}`:'');
+        const [availableSizes, setAvailableSizes] = useState((props && props.availableSizes)?JSON.parse(props.availableSizes):[]);
+        const [availableColours, setAvailablecolours] = useState((props && props.availableColours)?JSON.parse(props.availableColours):[]);
+        const [uri, setUri] = useState((props && props.uri)?props.uri:'');
+        const [base64, setBase64] = useState((props && props.uri)?props.uri:null);
         const [hasPermission, setHasPermission] = useState(null);
         const [isPhotoTaken, setIsPhotoTaken] = useState(false);
         const [type, setType] = useState(Camera.Constants.Type.back);
@@ -40,7 +42,7 @@ export default function NewOffer({ navigation }) {
             (async () => {
                 const { status } = await Camera.requestCameraPermissionsAsync();
                 setHasPermission(status === 'granted');
-                setUri('');
+                setUri((props && props.uri)?props.uri:'');
             })();
         }, []);
 
@@ -80,7 +82,52 @@ export default function NewOffer({ navigation }) {
         }
 
         function sendForm() {
-            axiosInstance.post("/post", {
+           if(props){
+               axiosInstance.put("/put", {
+                    key:props.key,
+                    title: title,
+                    material: material,
+                    price: price,
+                    availableSizes: availableSizes,
+                    availableColours: availableColours,
+                    uri: base64
+                })
+                .then(function (response) {
+                    if(response.data.data)
+                        Alert.alert("Informacja", response.data.data);
+                    setTitle('');
+                    setMaterial('');
+                    setIsPhotoTaken(false);
+                    setPrice('');
+                    setAvailableSizes([]);
+                    setAvailablecolours([]);
+                    setBase64(null);
+                    setUri('');
+
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        if (error.response.data && error.response.data.data != null && error.response.data.data != undefined)
+                        {
+                            var message = "";
+                            if(Array.isArray(error.response.data.data))
+                            {
+                                error.response.data.data.forEach(element => {
+                                    message += element + "\n";
+                                });
+                            }
+                            else message = error.response.data.data;
+                            Alert.alert("Nie można zmienić oferty!", message);
+                        }
+                        else {
+                            console.log(error.response.status);
+                            console.log(error.response.data);
+                        }
+                    }
+                })
+            }
+            else{
+                axiosInstance.post("/post", {
                     title: title,
                     material: material,
                     price: price,
@@ -121,6 +168,7 @@ export default function NewOffer({ navigation }) {
                         }
                     }
                 })
+            }
         }
 
         return (
@@ -178,7 +226,7 @@ export default function NewOffer({ navigation }) {
                 </View>
                 <View >
                     <Text style={style.titleText}>Dostępne kolory</Text>
-                    <View style={{ marginTop: 10, marginBottom: 10, alignContent: 'center', flexDirection: 'row' }}>
+                    <View style={{ marginTop: 10, marginBottom: 10, alignContent: 'center', flexDirection: 'row', justifyContent: 'center' }}>
                         <Colours props={availableColours} />
                     </View>
                     <TouchableOpacity style={style.addColorBtn}>
@@ -187,12 +235,13 @@ export default function NewOffer({ navigation }) {
                 </View>
                 <View style={style.title}>
                     <Text style={style.titleText}>Dostępne rozmiary</Text>
+                    <Sizes props={availableSizes}/>
                     <TouchableOpacity style={style.addColorBtn}>
                         <FontAwesomeIcon icon="plus" size={30} style={style.addColor} />
                     </TouchableOpacity>
                 </View>
                 <View style={style.title}>
-                    <TouchableOpacity style={style.sendForm} onPress={() => sendForm()}><Text>Dodaj ofertę</Text></TouchableOpacity>
+                    <TouchableOpacity style={style.sendForm} onPress={() => sendForm()}><Text>{props?'Zmień':'Dodaj'} ofertę</Text></TouchableOpacity>
                 </View>
             </View>
         );
