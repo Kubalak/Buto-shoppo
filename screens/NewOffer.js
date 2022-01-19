@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, FlatList, Text, Alert, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import axios from 'axios';
-import Colours from '../components/Colours';
-import Config from "../config";
 import { Camera } from 'expo-camera';
+import Colours from '../components/Colours';
 import Sizes from '../components/Sizes';
-// Hierr oskryptować formularz!!!
+import createInstance from '../config';
+
 
 function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
-const axiosInstance = axios.create();
+const axiosInstance = createInstance();
 
 export default function NewOffer({ navigation, route }) {
     let props = null;
@@ -21,7 +20,7 @@ export default function NewOffer({ navigation, route }) {
         const [material, setMaterial] = useState((props && props.material)?props.material:'');
         const [price, setPrice] = useState((props && props.price)?`${props.price}`:'');
         const [availableSizes, setAvailableSizes] = useState((props && props.availableSizes)?JSON.parse(props.availableSizes):[]);
-        const [availableColours, setAvailablecolours] = useState((props && props.availableColours)?JSON.parse(props.availableColours):[]);
+        const [availableColours, setAvailableColours] = useState((props && props.availableColours)?JSON.parse(props.availableColours):[]);
         const [uri, setUri] = useState((props && props.uri)?props.uri:'');
         const [base64, setBase64] = useState((props && props.uri)?props.uri:null);
         const [hasPermission, setHasPermission] = useState(null);
@@ -38,7 +37,6 @@ export default function NewOffer({ navigation, route }) {
         }
 
         useEffect(() => {
-            Config(false);
             (async () => {
                 const { status } = await Camera.requestCameraPermissionsAsync();
                 setHasPermission(status === 'granted');

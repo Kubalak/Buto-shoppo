@@ -3,10 +3,9 @@ import { Button, Modal } from "native-base";
 import { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Image, TextInput, Pressable, ImageBackground,Alert } from "react-native";
 import { useToast } from "native-base";
-import Config from "../config";
-import axios from "axios";
+import createInstance from "../config";
 
-const axiosInstance = axios.create();
+const axiosInstance = createInstance();
 
 export default function Login({ navigation, route }) {
 
@@ -17,7 +16,6 @@ export default function Login({ navigation, route }) {
     const toast = useToast();
 
     useEffect(() => {
-        Config(false);
         if (route.params && route.params.logout && route.params.logout === true) {
             axiosInstance.get("/logout")
                 .then(function (response) {

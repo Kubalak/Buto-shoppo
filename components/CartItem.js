@@ -4,19 +4,20 @@ import { Items } from "../storage/items";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Modal, Spinner, Heading } from "native-base";
-import Config from "../config";
-import axios from "axios";
+import createInstance from "../config";
 
-const axiosInstance = axios.create();
+const axiosInstance = createInstance();
 
 export default function CartItem({ props }) {
+    //TODO: Przekierowanie na widok oferty sprzedaży.
+    
     const navigation = useNavigation();
     const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false)
     const [element, setElement] = useState(null);
 
     useEffect(() => {
-        Config(false);
+
         axiosInstance.get("/get",
             {
                 params:{

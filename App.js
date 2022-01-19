@@ -1,16 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, StatusBar, Platform } from 'react-native';
+import { StyleSheet, StatusBar, Platform, KeyboardAvoidingView } from 'react-native';
 import HomeNavigation from './navigation/HomeNavigation';
 import { NativeBaseProvider } from 'native-base';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faPlus, faPlusSquare, faImage, faEdit, faCaretUp, faCaretDown, faReply, faStore, faInfo, faUser, faUserTag } from '@fortawesome/free-solid-svg-icons';
 
+library.add(
+  faTrash,
+  faArrowLeft,
+  faArrowRight,
+  faShoppingCart,
+  faCartPlus,
+  faPlus,
+  faImage,
+  faEdit,
+  faCaretUp,
+  faCaretDown,
+  faReply,
+  faStore,
+  faInfo,
+  faUser,
+  faPlusSquare,
+  faUserTag
+)
 
 export default function App() {
   return (
-    <View style={styles.base}>
+    <KeyboardAvoidingView style={styles.base} behavior={Platform.OS ==='android'?"height":"padding"}>
       <NativeBaseProvider>
         <HomeNavigation />
       </NativeBaseProvider>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {View,Text, StyleSheet, FlatList} from 'react-native';
 import OfferItem from '../components/OfferItem';
 import { Spinner, HStack, Heading } from "native-base";
-import Config from "../config";
-import axios from 'axios';
+import createInstance from '../config';
 
-const axiosInstance = axios.create();
+const axiosInstance = createInstance();
 
 export default function MyOffers({navigation})
 {

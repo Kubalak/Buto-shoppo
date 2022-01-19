@@ -10,10 +10,9 @@ import MyOffers from "./MyOffers";
 import NewOffer from "./NewOffer";
 import About from "./About";
 import Account from "./Account";
-import axios from "axios";
-import Config from "../config";
+import createInstance from "../config";
 
-const axiosInstance = axios.create();
+const axiosInstance = createInstance();
 
 function HomeView({ navigation }) {
   const [data, setData] = useState(null);
@@ -37,9 +36,7 @@ function HomeView({ navigation }) {
   }
   
   useEffect(() => {
-    
-    Config(false);
-    getData();
+      getData();
 
   }, []);
 
