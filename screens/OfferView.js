@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView,StyleSheet, TouchableOpacity,Text } from "react-native";
+import { View,StyleSheet, TouchableOpacity,Text } from "react-native";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import ItemView  from "./ItemView";
 
@@ -7,12 +7,12 @@ export default function OfferView({navigation,route})
 {
 
     return (
-        <ScrollView style={style.default}>
+        <View style={style.default}>
             <ItemView route={route} navigation={navigation} style={{flex: 1}}/>
             <TouchableOpacity style={style.pressable} onPress={() => navigation.push('editOffer', {params:route.params})}>
                 <Text style={{fontSize: 18}}>Edytuj <FontAwesomeIcon icon="edit" size={18}/></Text>
             </TouchableOpacity>
-        </ScrollView>
+        </View>
     );
 }
 
@@ -30,12 +30,12 @@ const style = StyleSheet.create({
         marginRight: 20,
         width: 100,
         borderRadius: 5,
-        elevation: 6,
+        elevation: 4,
         shadowColor: 'black',
         shadowRadius: 10,
         shadowOpacity: 5,
         alignContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#CE5FDA',
+        backgroundColor: '#22E877',
     }
 })

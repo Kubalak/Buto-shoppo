@@ -107,9 +107,6 @@ export default function Login({ navigation, route }) {
                         onChangeText={(password) => setPassword(password)}
                     />
                 </View>
-                <Pressable onPress={() => console.log("Zapomniało się")}>
-                    <Text>Zapomniałeś hasła?</Text>
-                </Pressable>
                 <MyModal />
                 <Pressable style={style.loginBtn} onPress={() => { Verify() }}><Text>Zaloguj</Text></Pressable>
             </ImageBackground>

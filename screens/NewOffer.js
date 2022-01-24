@@ -93,14 +93,15 @@ export default function NewOffer({ navigation, route }) {
                 .then(function (response) {
                     if(response.data.data)
                         Alert.alert("Informacja", response.data.data);
+                    setIsPhotoTaken(false);
+                    setUri('');
                     setTitle('');
                     setMaterial('');
-                    setIsPhotoTaken(false);
                     setPrice('');
                     setAvailableSizes([]);
                     setAvailablecolours([]);
                     setBase64(null);
-                    setUri('');
+                    
 
                 })
                 .catch(function (error) {
@@ -136,14 +137,15 @@ export default function NewOffer({ navigation, route }) {
                 .then(function (response) {
                     if(response.data.data)
                         Alert.alert("Informacja", response.data.data);
+                    setIsPhotoTaken(false);
+                    setUri('');
                     setTitle('');
                     setMaterial('');
-                    setIsPhotoTaken(false);
                     setPrice('');
                     setAvailableSizes([]);
                     setAvailablecolours([]);
                     setBase64(null);
-                    setUri('');
+                    
 
                 })
                 .catch(function (error) {

@@ -4,4 +4,4 @@ import Colours from './Colours';
 import OfferItem from "./OfferItem";
 import Sizes from './Sizes';
 
-export { ShopItem, CartItem, Colours,OfferItem, Sizes};
+export default { ShopItem, CartItem, Colours,OfferItem, Sizes};
