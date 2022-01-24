@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Image} from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
+import { Center } from "native-base";
 
 const BottomTabNavigator = createBottomTabNavigator();
 /* Do dodania BottomTabNavigator i jakieś informacje o tym co kto robił. */
@@ -18,9 +20,16 @@ function Kuba(){
 function Patryk(){
     return(
         <View style={style.default}>
-            <Text>
-                Patryk
+            <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center' }}>
+            <Image source={require('../assets/icon.png')} style={{ width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25 }} />
+            <Text style={style.styl_Patryk}>
+                *Patryk* {"\n"}
+                -Interfejs koszyka {"\n"}
+                -Item View {"\n"}
+                -Toast przy zakupie {"\n"}
+                -Modal przy usuwaniu {"\n"}
             </Text>
+            </ImageBackground>
         </View>
     );
 }
@@ -40,7 +49,7 @@ export default function About()
             <BottomTabNavigator.Screen
             options={{
                 headerShown: false,
-                tabBarIcon: (focused) => <View style={{width:15, height:15, backgroundColor: '#00AD3F', elevation: 3, borderRadius: 2}}/> //Należy zmienić ikonę
+                tabBarIcon: (focused) => <FontAwesomeIcon icon="tired" size={18} color="#00AD3F"/> //Należy zmienić ikonę
             }}
             name="Patryk"
             component={Patryk}
@@ -54,5 +63,13 @@ const style = StyleSheet.create({
     default:{
         flex:1,
         backgroundColor: 'white',
+    },
+    styl_Patryk:{
+        fontSize: 30,
+        fontWeight: 'bold',
+        fontStyle:'italic',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        color: '#009B77',
     }
 })
