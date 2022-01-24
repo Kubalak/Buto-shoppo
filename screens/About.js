@@ -21,6 +21,7 @@ function Patryk(){
     return(
         <View style={style.default}>
             <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={style.styl_Patryk_title}>  Butto shoppo INC   </Text>
             <Image source={require('../assets/icon.png')} style={{ width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25 }} />
             <Text style={style.styl_Patryk}>
                 *Patryk* {"\n"}
@@ -49,7 +50,7 @@ export default function About()
             <BottomTabNavigator.Screen
             options={{
                 headerShown: false,
-                tabBarIcon: (focused) => <FontAwesomeIcon icon="tired" size={18} color="#00AD3F"/> //Należy zmienić ikonę
+                tabBarIcon: (focused) => <FontAwesomeIcon icon="tired" size={18} color="#FF8C00"/> //Należy zmienić ikonę
             }}
             name="Patryk"
             component={Patryk}
@@ -70,6 +71,16 @@ const style = StyleSheet.create({
         fontStyle:'italic',
         textAlignVertical: 'center',
         textAlign: 'center',
-        color: '#009B77',
+        color: '#FF8C00',
+    },
+    styl_Patryk_title:{
+        fontSize: 40,
+        fontWeight: 'bold',
+        fontStyle:'italic',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        color: '#FF8C00',
+        textDecorationLine:'underline',
+        
     }
 })
