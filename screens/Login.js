@@ -76,7 +76,6 @@ export default function Login({ navigation, route }) {
                     if (error.response.status === 403) {
                         setShowModal(true);
                     }
-                    console.log(error.response.data);
                 }
                 else {
                     console.log(error);
