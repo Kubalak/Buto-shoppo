@@ -1,18 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, Image} from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
-import { Center } from "native-base";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 const BottomTabNavigator = createBottomTabNavigator();
-/* Do dodania BottomTabNavigator i jakieś informacje o tym co kto robił. */
 
 function Kuba(){
     return(
         <View style={style.default}>
-            <Text>
-                Kuba
+            <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center' }}>
+            <Image source={require('../assets/icon.png')} style={{ width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25 }} />
+            <View style={style.styleKuba}>
+            <Text style={style.KubaHeader}><FontAwesomeIcon icon="fire" size={30} color='#EA9935'/>Kuba<FontAwesomeIcon icon="fire" size={30} color='#EA9935'/></Text>
+            <Text style={style.KubaText}>
+                - Stworzenie nawigacji{'\n'}
+                - Obsługa axiosa{'\n'}
+                - Backend w <Text style={{...style.KubaText, fontStyle: 'italic'}}>PHP, MySQL <FontAwesomeIcon icon="grin-tongue-squint" size={25} color='#EA9935'/></Text>{'\n'}
+                - Obsługa aparatu{'\n'}
+                - Logowanie do aplikacji {'\n'}
+                - Przesyłanie formularzy{'\n'}
             </Text>
+            </View>
+            </ImageBackground>
         </View>
     );
 }
@@ -24,10 +33,10 @@ function Patryk(){
             <Image source={require('../assets/icon.png')} style={{ width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25 }} />
             <Text style={style.styl_Patryk}>
                 *Patryk* {"\n"}
-                -Interfejs koszyka {"\n"}
-                -Item View {"\n"}
-                -Toast przy zakupie {"\n"}
-                -Modal przy usuwaniu {"\n"}
+                - Interfejs koszyka {"\n"}
+                - Item View {"\n"}
+                - Toast przy zakupie {"\n"}
+                - Modal przy usuwaniu {"\n"}
             </Text>
             </ImageBackground>
         </View>
@@ -41,7 +50,7 @@ export default function About()
             <BottomTabNavigator.Screen
             options={{
                 headerShown: false,
-                tabBarIcon: (focused) => <View style={{width:15, height:15, backgroundColor: '#00AD3F', elevation: 3, borderRadius: 2}}/> //Należy zmienić ikonę
+                tabBarIcon: (focused) => <FontAwesomeIcon icon="dizzy" size={18} color='#FFA538'/> //Należy zmienić ikonę
             }}
             name="Kuba"
             component={Kuba}
@@ -49,7 +58,7 @@ export default function About()
             <BottomTabNavigator.Screen
             options={{
                 headerShown: false,
-                tabBarIcon: (focused) => <FontAwesomeIcon icon="tired" size={18} color="#00AD3F"/> //Należy zmienić ikonę
+                tabBarIcon: (focused) => <FontAwesomeIcon icon="tired" size={18} color="#FFA538"/> //Należy zmienić ikonę
             }}
             name="Patryk"
             component={Patryk}
@@ -70,6 +79,23 @@ const style = StyleSheet.create({
         fontStyle:'italic',
         textAlignVertical: 'center',
         textAlign: 'center',
-        color: '#009B77',
+        color: '#EA9935',
+    },
+    styleKuba:{
+        width: '100%',
+        
+    },
+    KubaHeader:{
+        color: '#EA9935',
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    KubaText:{
+        fontSize: 25,
+        marginLeft: 25,
+        fontWeight: 'bold',
+        color:'#EA9935',
+
     }
 })

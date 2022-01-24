@@ -3,7 +3,28 @@ import { StyleSheet, StatusBar, Platform, KeyboardAvoidingView } from 'react-nat
 import HomeNavigation from './navigation/HomeNavigation';
 import { NativeBaseProvider } from 'native-base';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash, faArrowLeft, faArrowRight, faShoppingCart, faCartPlus, faPlus, faPlusSquare, faImage, faEdit, faCaretUp, faCaretDown, faReply, faStore, faInfo, faUser, faUserTag, faTired } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faTrash, 
+  faArrowLeft, 
+  faArrowRight, 
+  faShoppingCart, 
+  faCartPlus, 
+  faPlus, 
+  faPlusSquare, 
+  faImage, 
+  faEdit, 
+  faCaretUp, 
+  faCaretDown, 
+  faReply, 
+  faStore, 
+  faInfo, 
+  faUser, 
+  faUserTag, 
+  faTired,
+  faDizzy,
+  faGrinTongueSquint,
+  faFire
+ } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faTrash,
@@ -22,7 +43,10 @@ library.add(
   faUser,
   faPlusSquare,
   faUserTag,
-  faTired
+  faTired,
+  faDizzy,
+  faGrinTongueSquint,
+  faFire
 )
 
 export default function App() {
