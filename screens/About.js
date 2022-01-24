@@ -30,6 +30,7 @@ function Patryk(){
     return(
         <View style={style.default}>
             <ImageBackground source={require('../assets/background.png')} style={{flex:1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={style.styl_Patryk_title}>  Butto shoppo INC   </Text>
             <Image source={require('../assets/icon.png')} style={{ width: 200, height: 200, resizeMode: 'stretch', marginBottom: 25 }} />
             <Text style={style.styl_Patryk}>
                 *Patryk* {"\n"}
@@ -97,5 +98,16 @@ const style = StyleSheet.create({
         fontWeight: 'bold',
         color:'#EA9935',
 
+        color: '#FF8C00',
+    },
+    styl_Patryk_title:{
+        fontSize: 40,
+        fontWeight: 'bold',
+        fontStyle:'italic',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        color: '#FF8C00',
+        textDecorationLine:'underline',
+        
     }
 })
